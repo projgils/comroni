@@ -1,0 +1,35 @@
+development:
+
+  adapter: postgresql
+
+  database: mydb_as_inormoc
+
+  pool: 5
+
+  timeout: 5000
+  
+  username: inormoc
+
+  password: password123
+
+test:
+
+  adapter: postgresql
+
+  database: mydb_as_inormoc
+
+  pool: 5
+
+  timeout: 5000
+
+  username: inormoc
+
+  password: password123
+
+production:
+
+  adapter: postgresql
+
+  encoding: unicode
+
+  pool: 5%

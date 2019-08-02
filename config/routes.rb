@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   resources 'blogs'
   namespace :admin do
     resources :dashboards, only: :index
+    resources :pages
   end
 end

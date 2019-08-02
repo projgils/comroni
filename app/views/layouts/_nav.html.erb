@@ -32,8 +32,15 @@
 			</li>
 			<li class="<%= is_current_page?('/blogs') %>"><a href="/blogs">Blog</a></li>
 			<li><a href="contact.html">Contact</a></li>
-
-			<li><a href="#" class="cta"><span class="bg-primary text-white rounded">+ Post an Ad</span></a></li>
+      <% if user_signed_in? %>
+        <li class="ml-xl-3 <%= is_current_page?('/admin/dashboards') %>"><a href="/admin/dashboards"><span class="border-left pl-xl-4"></span>Dashboard</a></li>
+        <li class="ml-xl-3 login">
+          <%= link_to 'Log Out', destroy_user_session_path, method: :delete %>
+        </li>
+      <% else %>
+			  <li class="ml-xl-3 login"><a href="<%= user_session_path %>"><span class="border-left pl-xl-4"></span>Log In</a></li>
+      <% end %>
+			<li class='d-none'><a href="#" class="cta"><span class="bg-primary text-white rounded">+ Post an Ad</span></a></li>
 		  </ul>
 		</nav>
 	  </div>

@@ -55,3 +55,6 @@ gem 'devise'
 
 # FrontEnd
 gem 'jquery-rails'
+
+# SEO
+gem 'friendly_id', '~> 5.2.4'

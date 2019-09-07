@@ -49,7 +49,7 @@
     <div class="site-section bg-light">
       <div class="container">
         
-        <div class="overlap-category mb-5">
+        <div class="overlap-category mb-5 d-none">
           <div class="row align-items-stretch no-gutters">
             <div class="col-sm-6 col-md-4 mb-4 mb-lg-0 col-lg-2">
               <a href="#" class="popular-category h-100">
@@ -95,7 +95,60 @@
             </div>
           </div>
         </div>
-        
+
+        <div class="row">
+          <div class="col-12">
+            <h2 class="h5 mb-4 text-black">Featured Pages</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12  block-13">
+            <div class="owl-carousel nonloop-block-13">
+              
+              <% @featured_pages.each do |page| %>
+                <div class="d-block d-md-flex listing vertical">
+                  <a href="<%= page_path(page) %>" class="img d-block" style="background-image: url('<%= page.display_image_url %>')"></a>
+                  <div class="lh-content">
+                    <span class="category d-none">InOrmoc Page</span>
+                    <a href="#" class="bookmark d-none"><span class="icon-heart"></span></a>
+                    <h3><a href="<%= page_path(page) %>"><%= page.title %></a></h3>
+                    <address>Ormoc Citye</address>
+                    <p class="mb-0 d-none">
+                      <span class="icon-star text-warning"></span>
+                      <span class="icon-star text-warning"></span>
+                      <span class="icon-star text-warning"></span>
+                      <span class="icon-star text-warning"></span>
+                      <span class="icon-star text-secondary"></span>
+                      <span class="review">(3 Reviews)</span>
+                    </p>
+                  </div>
+                </div>
+              <% end %>
+
+              <% @featured_pages.each do |page| %>
+                <div class="d-block d-md-flex listing vertical">
+                  <a href="<%= page_path(page) %>" class="img d-block" style="background-image: url('<%= page.display_image_url %>')"></a>
+                  <div class="lh-content">
+                    <span class="category d-none">InOrmoc Page</span>
+                    <a href="#" class="bookmark d-none"><span class="icon-heart"></span></a>
+                    <h3><a href="<%= page_path(page) %>"><%= page.title %></a></h3>
+                    <address>Ormoc Citye</address>
+                    <p class="mb-0 d-none">
+                      <span class="icon-star text-warning"></span>
+                      <span class="icon-star text-warning"></span>
+                      <span class="icon-star text-warning"></span>
+                      <span class="icon-star text-warning"></span>
+                      <span class="icon-star text-secondary"></span>
+                      <span class="review">(3 Reviews)</span>
+                    </p>
+                  </div>
+                </div>
+              <% end %>
+
+            </div>
+          </div>
+        </div>
+
         <div class="row">
           <div class="col-12">
             <h2 class="h5 mb-4 text-black">Featured Ads</h2>
@@ -251,8 +304,6 @@
 
             </div>
           </div>
-
-
         </div>
       </div>
     </div>

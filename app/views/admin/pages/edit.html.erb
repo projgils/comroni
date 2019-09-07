@@ -17,19 +17,18 @@
         <div class='col-md-10 border border-secondary py-4' style='min-height: 550px;'>
           <div class='row'>
             <div class='col-12'>
-              <a href='/admin/dashboards' class='btn btn-sm btn-info float-right mb-2'>
+              <a href='/admin/dashboards' class='btn btn-sm btn-info float-right mb-2 mx-2'>
                 < Back
               </a>
+              <%= link_to '+ Add Sub Page', new_admin_page_path(main_page_id: @page.id), class: 'btn btn-sm btn-info float-right mb-2 mx-2' %>
             </div>
             <div class='col-12'>
-              <%= render partial: 'admin/pages/adding_sub_page_header', locals: { main_page: @main_page } if @main_page.present? %>
               <% flash.each do |name, msg| %>
                 <%= content_tag :div, msg, class: "alert alert-info" %>
               <% end %>
-              <%= form_with url: admin_pages_path, model: Page, data: { remote: :false } do |f| %>
+              <%= form_with url: admin_page_path(@page), model: @page, method: :patch, data: { remote: :false } do |f| %>
                 <div class='form-group'>
                   <label>Title</label>
-                  <%= f.hidden_field :main_page_id, value: (@main_page.id || nil) if @main_page.present? %>
                   <%= f.text_field :title, class: 'form-control', placeholder: 'Title of the page...', autocomplete: :off, required: true %>
                 </div>
                 <div class='form-group'>
@@ -45,9 +44,42 @@
                   <%= f.text_area :content, class: 'form-control', placeholder: 'Enter content with HTML markup here...', rows: 6, autocomplete: :off, requried: true %>
                 </div>
                 <div class='form-group'>
-                  <%= f.submit 'Save', class: 'form-control btn btn-sm btn-info' %>
+                  <%= f.submit 'Update', class: 'form-control btn btn-sm btn-info' %>
                 </div>
               <% end %>
+            </div>
+          </div>
+
+          <div class='row'>
+            <div class='col-12'>
+              <h5>Sub Pages</h5>
+
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% Page.where(main_page_id: @page.id).each do |page| %>
+                    <tr>
+                      <th scope="row"><%= page.id %></th>
+                      <td><%= page.title %></td>
+                      <td><span class='badge <%= render_page_status_badge_class(page) %>'><%= page.published_at.nil? ? 'Draft' : 'Published' %></span></td>
+                      <td>
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                          <button type="button" class="btn btn-secondary btn-sm">View</button>
+                          <%= link_to 'Edit', edit_admin_page_path(page), class: 'btn btn-secondary btn-sm' %>
+                          <%= link_to 'Delete', admin_page_path(page), method: :delete, class: 'btn btn-secondary btn-sm' %>
+                        </div>
+                      </td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
             </div>
           </div>
 

@@ -21,17 +21,17 @@
 		  <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
 			<li class="<%= is_current_page?('/') %>"><a href="<%= root_path %>">Home</a></li>
 			<li class="<%= is_current_page?('pages') %>"><a href="<%= pages_path %>">Pages</a></li>
-			<li class="has-children">
-			  <a href="about.html">About</a>
-			  <ul class="dropdown">
-				<li><a href="#">The Company</a></li>
-				<li><a href="#">The Leadership</a></li>
-				<li><a href="#">Philosophy</a></li>
-				<li><a href="#">Careers</a></li>
-			  </ul>
-			</li>
 			<li class="<%= is_current_page?('/blogs') %>"><a href="/blogs">Blog</a></li>
 			<li><a href="contact.html">Contact</a></li>
+      <li class="has-children">
+        <a href="about.html">About</a>
+        <ul class="dropdown">
+        <li><a href="#">The Company</a></li>
+        <li><a href="#">The Leadership</a></li>
+        <li><a href="#">Philosophy</a></li>
+        <li><a href="#">Careers</a></li>
+        </ul>
+      </li>
       <% if user_signed_in? %>
         <li class="ml-xl-3 <%= is_current_page?('/admin/dashboards') %>"><a href="/admin/dashboards"><span class="border-left pl-xl-4"></span>Dashboard</a></li>
         <li class="ml-xl-3 login">

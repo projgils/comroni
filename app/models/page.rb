@@ -18,8 +18,6 @@ class Page < ApplicationRecord
   private
 
     def self_cannot_be_main_page
-      p "main_page_id: #{self.main_page_id}"
-      p "self_id: #{self.id}"
       if (main_page_id == id) && (main_page_id.present?)
         errors.add(:base, "Can't set self as main page.")
       end

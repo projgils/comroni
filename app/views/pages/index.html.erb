@@ -28,11 +28,11 @@
             <div class="col-lg-6">
               
               <div class="d-block d-md-flex listing vertical">
-                <a href="#" class="img d-block" style="background-image: url('<%= page.display_image_url %>')"></a>
+                <a href="<%= page_path(page) %>" class="img d-block" style="background-image: url('<%= page.display_image_url %>')"></a>
                 <div class="lh-content">
                   <span class="category d-none">Cars &amp; Vehicles</span>
                   <a href="#" class="bookmark"><span class="icon-heart"></span></a>
-                  <h3><a href="#"><%= page.title %></a></h3>
+                  <h3><a href="<%= page_path(page) %>"><%= page.title %></a></h3>
                   <address>Ormoc City</address>
                   <p class="mb-0 d-none">
                     <span class="icon-star text-warning"></span>

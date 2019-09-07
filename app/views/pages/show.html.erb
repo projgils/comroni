@@ -6,7 +6,7 @@
         
         
         <div class="row justify-content-center mt-5">
-          <div class="col-md-8 text-center">
+          <div class="col-md-12 text-center">
             <h1><%= @page.title %></h1>
             <p class="mb-0">Ormoc City</p>
           </div>
@@ -21,7 +21,7 @@
 <div class="site-section">
   <div class="container">
     <div class="row">
-      <div class="col-lg-7">
+      <div class="<%= @page.sub_pages.blank? ? 'col-lg-7 mx-auto' : 'col-lg-7' %>">
         
         <div class="mb-4 d-none">
           <div class="slide-one-item home-slider owl-carousel">
@@ -39,7 +39,7 @@
         <p>Sapiente molestias voluptate cupiditate blanditiis quasi qui aperiam accusamus aspernatur ipsam velit nihil quaerat voluptatum soluta laboriosam ipsum veritatis at reiciendis quod voluptates, saepe harum dignissimos placeat dolorum aliquid! Quod quasi praesentium optio ratione non et sit quos excepturi cum?</p>
 
       </div>
-      <div class="col-lg-5 ml-auto">
+      <div class="col-lg-5 ml-auto <%= 'd-none' if @page.sub_pages.blank? %>">
 
         <div class="row mt-5">
           <div class="col-lg-12">

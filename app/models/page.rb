@@ -8,6 +8,8 @@ class Page < ApplicationRecord
   belongs_to :main_page, class_name: 'Page', optional: true
   belongs_to :category, optional: true
 
+  after_save :update_searchable_text
+
   extend FriendlyId
   friendly_id :title, use: [:slugged, :finders]
 
@@ -29,6 +31,14 @@ class Page < ApplicationRecord
     c = 'Others'
     c = category.name if category_id.present?
     c
+  end
+
+  def merged_searchable_text
+    "#{title} | #{description} | #{content.split[0...200].join(' ')} | #{address} | #{page_category}"
+  end
+
+  def update_searchable_text
+    self.update_column(:searchable_text, merged_searchable_text)
   end
 
   private

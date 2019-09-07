@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root 'homepage#index'
   resources 'blogs'
   resources :pages, only: %w{show index}
+  resources :searches, only:  %w{show index}
 
   namespace :admin do
     resources :dashboards, only: :index

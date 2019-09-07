@@ -13,7 +13,7 @@
             </div>
 
             <div class="form-search-wrap" data-aos="fade-up" data-aos-delay="200">
-              <form method="post">
+              <form class='d-none' method="post">
                 <div class="row align-items-center">
                   <div class="col-lg-12 mb-4 mb-xl-0 col-xl-6">
                     <input type="text" class="form-control rounded" placeholder="What are you looking for?">
@@ -23,7 +23,7 @@
                       <span class="icon"><span class="icon-keyboard_arrow_down"></span></span>
                       <select class="form-control rounded" name="" id="">
                         <option value="">All Categories</option>
-						<option value="">Foods &amp; Delicacies</option>
+						            <option value="">Foods &amp; Delicacies</option>
                         <option value="">Real Estate</option>
                         <option value="">Books &amp;  Magazines</option>
                         <option value="">Furniture</option>
@@ -39,6 +39,29 @@
                   
                 </div>
               </form>
+
+              <%= form_with url: searches_path, method: :get, local: true do |f| %>
+                <div class="row align-items-center">
+                  <div class="col-lg-12 mb-4 mb-xl-0 col-xl-6">
+                    <%= f.text_field :search_string, class: 'form-control rounded', placeholder: 'What are you looking for?', autocomplete: :off %>
+                  </div>
+                  <div class="col-lg-12 mb-4 mb-xl-0 col-xl-4">
+                    <div class="select-wrap">
+                      <span class="icon"><span class="icon-keyboard_arrow_down"></span></span>
+                      <select class="form-control rounded" name="category_id" id="category_id">
+                        <option value="">All Categories</option>
+                        <% Category.all.each do |c| %>
+                          <option value="<%= c.id %>"><%= c.name %></option>
+                        <% end %>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-lg-12 col-xl-2 ml-auto text-right">
+                    <input type="submit" class="btn btn-primary btn-block rounded" value="Search">
+                  </div>
+                  
+                </div>
+              <% end %>
             </div>
 
           </div>

@@ -45,11 +45,11 @@
           <div class="col-lg-12">
             <% @page.sub_pages.each do |page| %>
               <div class="d-block d-md-flex listing">
-                <a href="#" class="img d-block" style="background-image: url('<%= page.display_image_url %>')"></a>
+                <a href="<%= page_path(page) %>" class="img d-block" style="background-image: url('<%= page.display_image_url %>')"></a>
                 <div class="lh-content">
                   <span class="category d-none">Real Estate</span>
-                  <a href="#" class="bookmark"><span class="icon-heart"></span></a>
-                  <h3><a href="#"><%= page.title %></a></h3>
+                  <a href="#" class="bookmark d-none"><span class="icon-heart"></span></a>
+                  <h3><a href="<%= page_path(page) %>"><%= page.title %></a></h3>
                   <address>Ormoc City</address>
                   <p class="mb-0 d-none">
                     <span class="icon-star text-warning"></span>

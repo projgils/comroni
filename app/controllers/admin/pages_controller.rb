@@ -50,7 +50,9 @@ class Admin::PagesController < ApplicationController
         :image_url,
         :content,
         :published_at,
-        :main_page_id
+        :main_page_id,
+        :address_details,
+        :category_id
       )
     end
 

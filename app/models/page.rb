@@ -6,6 +6,7 @@ class Page < ApplicationRecord
 
   has_many :sub_pages, class_name: 'Page', foreign_key: :main_page_id, dependent: :destroy
   belongs_to :main_page, class_name: 'Page', optional: true
+  belongs_to :category, optional: true
 
   extend FriendlyId
   friendly_id :title, use: [:slugged, :finders]
@@ -15,7 +16,19 @@ class Page < ApplicationRecord
   end
 
   def display_image_url
-    image_url || '/images/sals.png'
+    i ='/images/sals.png'
+    i = image_url if not image_url.blank?
+    i
+  end
+
+  def address
+    address_details || 'Ormoc City, Leyte, PH'
+  end
+
+  def page_category
+    c = 'Others'
+    c = category.name if category_id.present?
+    c
   end
 
   private

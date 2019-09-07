@@ -33,7 +33,7 @@
                 </div>
                 <div class='form-group'>
                   <label>Image URL</label>
-                  <%= f.text_field :image_url, class: 'form-control', placeholder: 'Enter image url here...', autocomplete: :off, required: true %>
+                  <%= f.text_field :image_url, class: 'form-control', placeholder: 'Enter image url here...', autocomplete: :off %>
                 </div>
                 <div class='form-group'>
                   <label>Description</label>
@@ -42,6 +42,16 @@
                 <div class='form-group'>
                   <label>Content</label>
                   <%= f.text_area :content, class: 'form-control', placeholder: 'Enter content with HTML markup here...', rows: 6, autocomplete: :off, requried: true %>
+                </div>
+                <div class='form-group'>
+                  <label>Address Details</label>
+                  <%= f.text_area :content, class: 'form-control', placeholder: 'Enter address details here...', rows: 2, autocomplete: :off, requried: true %>
+                </div>
+                <div class='form-group'>
+                  <label>Select Category</label>
+                  <div class='col-12 px-0'>
+                    <%= f.select :category_id, options_from_collection_for_select(Category.all, :id, :name) %>
+                  </div>
                 </div>
                 <div class='form-group'>
                   <%= f.submit 'Update', class: 'form-control btn btn-sm btn-info' %>

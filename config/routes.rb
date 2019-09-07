@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :dashboards, only: :index
     resources :pages
+    resources :publish_pages, only: :update
   end
 end

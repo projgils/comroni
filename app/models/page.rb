@@ -17,6 +17,10 @@ class Page < ApplicationRecord
     Page.find(self.main_page_id) if self.main_page_id.present?
   end
 
+  def published?
+    published_at.present?
+  end
+
   def display_image_url
     i ='/images/sals.png'
     i = image_url if not image_url.blank?

@@ -152,7 +152,7 @@
                 <div class="d-block d-md-flex listing vertical">
                   <a href="<%= page_path(page) %>" class="img d-block" style="background-image: url('<%= page.display_image_url %>')"></a>
                   <div class="lh-content">
-                    <span class="category d-none">InOrmoc Page</span>
+                    <span class="category"><%= page.page_category %></span>
                     <a href="#" class="bookmark d-none"><span class="icon-heart"></span></a>
                     <h3><a href="<%= page_path(page) %>"><%= page.title %></a></h3>
                     <address><%= page.address %></address>

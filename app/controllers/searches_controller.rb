@@ -5,9 +5,9 @@ class SearchesController < ApplicationController
 
   def index
     @result_pages = if params[:category_id].blank?
-      Page.where("searchable_text LIKE ?", "%#{params[:search_string]}%")
+      Page.where("searchable_text ILIKE ?", "%#{params[:search_string]}%").where.not(published_at: nil)
     else
-      Page.where(category_id: params[:category_id]).where("searchable_text LIKE ?", "%#{params[:search_string]}%")
+      Page.where(category_id: params[:category_id]).where("searchable_text ILIKE ?", "%#{params[:search_string]}%").where.not(published_at: nil)
     end
 
     respond_to do |format|

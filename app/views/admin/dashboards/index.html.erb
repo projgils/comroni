@@ -64,7 +64,7 @@
                   <td><span class='badge <%= render_page_status_badge_class(page) %>'><%= page.published_at.nil? ? 'Draft' : 'Published' %></span></td>
                   <td>
                     <div class="btn-group" role="group" aria-label="Basic example">
-                      <button type="button" class="btn btn-secondary btn-sm">View</button>
+                      <%= link_to 'View', page_path(page), class: 'btn btn-secondary btn-sm', target: '_blank' %>
                       <%= link_to 'Edit', edit_admin_page_path(page), class: 'btn btn-secondary btn-sm' %>
                       <%= link_to 'Delete', admin_page_path(page), method: :delete, class: 'btn btn-secondary btn-sm' %>
                     </div>

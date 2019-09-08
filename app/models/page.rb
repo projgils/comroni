@@ -1,7 +1,7 @@
 class Page < ApplicationRecord
   validates_presence_of :title, :description, :content
   validates_uniqueness_of :title
-  # validate :self_cannot_be_main_page
+
   before_validation :self_cannot_be_main_page, on: [ :create, :update ]
 
   has_many :sub_pages, class_name: 'Page', foreign_key: :main_page_id, dependent: :destroy
@@ -22,7 +22,7 @@ class Page < ApplicationRecord
   end
 
   def display_image_url
-    i ='/images/sals.png'
+    i ='/images/hero_1.jpg'
     i = image_url if not image_url.blank?
     i
   end

@@ -47,7 +47,7 @@ class Admin::PagesController < ApplicationController
       params.require(:page).permit(
         :title,
         :description,
-        :image_url,
+        :featured_image,
         :content,
         :published_at,
         :main_page_id,

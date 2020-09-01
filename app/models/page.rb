@@ -8,6 +8,8 @@ class Page < ApplicationRecord
   belongs_to :main_page, class_name: 'Page', optional: true
   belongs_to :category, optional: true
 
+  has_one_attached :featured_image
+
   after_save :update_searchable_text
 
   extend FriendlyId
@@ -24,6 +26,7 @@ class Page < ApplicationRecord
   def display_image_url
     i ='/images/hero_1.jpg'
     i = image_url if not image_url.blank?
+    i = featured_image.service_url if featured_image.attached?
     i
   end
 
